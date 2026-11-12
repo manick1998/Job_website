@@ -4,8 +4,19 @@ import path from "node:path";
 import { db } from "@/db";
 import { auditLogs, emailLog, notifications } from "@/db/schema";
 
-/* ---------- Email (outbox). Provider adapter slot: swap this for SMTP/SES/Resend via env. ---------- */
+/* ---------- Email (Resend). Falls back to outbox-only when RESBEND_API_KEY is unset. ---------- */
+let _resend: import("resend").Resend | null = null;
+function resend() {
+  if (_resend) return _resend;
+  if (!process.env.RESEND_API_KEY) return null;
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { Resend } = require("resend");
+  _resend = new Resend(process.env.RESEND_API_KEY);
+  return _resend;
+}
+
 export async function sendEmail(input: { to: string; subject: string; text: string; kind: string }) {
+  // Always log to the outbox for audit trail
   await db.insert(emailLog).values({
     toEmail: input.to,
     subject: input.subject,
@@ -13,6 +24,21 @@ export async function sendEmail(input: { to: string; subject: string; text: stri
     kind: input.kind,
   });
   console.info(`[email:${input.kind}] to=${input.to} subject="${input.subject}"`);
+
+  // Actually send via Resend if configured
+  const client = resend();
+  if (!client) return;
+  try {
+    await client.emails.send({
+      from: process.env.EMAIL_FROM || "Manick Job Portal <onboarding@resend.dev>",
+      to: input.to,
+      subject: input.subject,
+      text: input.text,
+    });
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error(`[email:${input.kind}] Resend send failed: ${msg}`);
+  }
 }
 
 /* ---------- In-app notifications ---------- */
