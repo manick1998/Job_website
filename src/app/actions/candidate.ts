@@ -314,7 +314,7 @@ export async function applyToJobAction(_prev: ActionState, formData: FormData): 
     to: user.email,
     kind: "application_confirmation",
     subject: `Application received: ${row.job.title} at ${row.companyName}`,
-    text: `Hi ${user.name},\n\nYour application for ${row.job.title} at ${row.companyName} has been submitted.\nTrack its status at ${APP_URL}/candidate/applications\n\n— SetuJobs`,
+    text: `Hi ${user.name},\n\nYour application for ${row.job.title} at ${row.companyName} has been submitted.\nTrack its status at ${APP_URL}/candidate/applications\n\n— Manick Job Portal`,
   });
 
   // Notify every recruiter on the hiring team.

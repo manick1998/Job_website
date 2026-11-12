@@ -22,7 +22,7 @@ test.describe("Responsive layout (mobile)", () => {
 
   test("candidate dashboard uses horizontal section nav on small screens", async ({ page }) => {
     await page.goto("/login");
-    await page.fill("input[name=email]", "candidate@setujobs.in");
+    await page.fill("input[name=email]", "candidate@manickjobportal.in");
     await page.fill("input[name=password]", "Demo@12345");
     await page.getByRole("button", { name: "Log in" }).click();
     await page.waitForURL(/candidate\/dashboard/);

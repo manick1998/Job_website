@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!c) return { title: "Company not found" };
   return {
     title: `${c.name} careers`,
-    description: c.description?.slice(0, 150) ?? `Explore open roles at ${c.name} on SetuJobs.`,
+    description: c.description?.slice(0, 150) ?? `Explore open roles at ${c.name} on Manick Job Portal.`,
     alternates: { canonical: `${APP_URL}/companies/${c.slug}` },
   };
 }

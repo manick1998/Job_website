@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Briefcase, Menu, Moon, Sun, X } from "lucide-react";
 import { logoutAction } from "@/app/actions/auth";
 import { newsletterAction } from "@/app/actions/shared";
@@ -10,27 +11,28 @@ import { ActionForm, Field } from "@/components/form";
 import { buttonClass, cn } from "@/components/ui";
 import { SITE_NAME } from "@/lib/utils";
 
-export function Logo({ light = false }: { light?: boolean }) {
+export function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
+  const height = size === "lg" ? "h-12" : size === "sm" ? "h-8" : "h-9";
   return (
-    <Link href="/" className="flex items-center gap-2.5" aria-label={`${SITE_NAME} home`}>
-      <span className="brand-gradient grid h-9 w-9 place-items-center rounded-xl text-white shadow-md shadow-indigo-500/30">
-        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
-          <path d="M3 17c3-6 6-6 9 0s6 6 9 0" />
-          <path d="M7 9V5M17 9V5" />
-        </svg>
-      </span>
-      <span className={cn("text-lg font-bold tracking-tight", light ? "text-white" : "text-fg")}>
-        Setu<span className="text-brand">Jobs</span>
-      </span>
+    <Link href="/" className="inline-flex items-center" aria-label={`${SITE_NAME} home`}>
+      <Image
+        src="/logo.png"
+        alt={`${SITE_NAME} logo`}
+        width={140}
+        height={78}
+        priority
+        className={cn(height, "w-auto select-none")}
+      />
     </Link>
   );
 }
 
 function ThemeToggle() {
-  const [dark, setDark] = useState(false);
-  useEffect(() => {
-    setDark(document.documentElement.classList.contains("dark"));
-  }, []);
+  // The theme script in <head> sets the `dark` class before hydration, so read
+  // it lazily on the client. suppressHydrationWarning covers the icon/aria mismatch.
+  const [dark, setDark] = useState(
+    () => typeof document !== "undefined" && document.documentElement.classList.contains("dark"),
+  );
   const toggle = () => {
     const next = !dark;
     setDark(next);
@@ -44,6 +46,7 @@ function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+      suppressHydrationWarning
       className="grid h-9 w-9 place-items-center rounded-xl border border-line bg-surface text-fg hover:bg-surface-2"
     >
       {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
@@ -64,7 +67,12 @@ const NAV = [
 export function SiteHeader({ user }: { user: HeaderUser }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  useEffect(() => setOpen(false), [pathname]);
+  // Reset the mobile menu when the route changes (render-time, not in an effect).
+  const [lastPath, setLastPath] = useState(pathname);
+  if (pathname !== lastPath) {
+    setLastPath(pathname);
+    setOpen(false);
+  }
 
   return (
     <header className="sticky top-0 z-40 border-b border-line/70 bg-bg/80 backdrop-blur-xl">
@@ -182,9 +190,9 @@ export function SiteFooter() {
     <footer className="mt-24 border-t border-line bg-surface">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-5">
         <div className="lg:col-span-2">
-          <Logo />
+          <Logo size="lg" />
           <p className="mt-4 max-w-sm text-sm text-muted">
-            SetuJobs connects skilled professionals and fresh graduates with verified employers across India. Built for
+            Manick Job Portal connects skilled professionals and fresh graduates with verified employers across India. Built for
             Bharat&apos;s next million hires.
           </p>
           <div className="mt-6 max-w-sm">
@@ -226,7 +234,7 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-line">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-xs text-muted sm:flex-row sm:justify-between sm:px-6">
-          <p>© {new Date().getFullYear()} SetuJobs Technologies Pvt. Ltd. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Manick Job Portal Technologies Pvt. Ltd. All rights reserved.</p>
           <p>Personal data handled per the Digital Personal Data Protection Act, 2023.</p>
         </div>
       </div>

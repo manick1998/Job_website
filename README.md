@@ -1,6 +1,6 @@
-# SetuJobs — Indian Job Recruitment Platform
+# Manick Job Portal — Indian Job Recruitment Platform
 
-SetuJobs ("setu" = bridge) is a full-stack job portal for India with three independent portals:
+Manick Job Portal is a full-stack job portal for India with three independent portals:
 
 - **Job seekers** — search & filter live jobs, save jobs, one-click applications with screening answers, resume management (PDF/DOCX with content verification), application history, job alerts, notifications and messaging, data export and account deletion.
 - **Recruiters / employers** — verified company profiles, job lifecycle (draft → review → live → paused → closed, duplicate, delete), a drag-and-drop **Kanban ATS** with private notes and ratings, interview scheduling with notifications, candidate search (privacy-aware), team seats and CSV export.
@@ -31,9 +31,9 @@ npm run dev                     # http://localhost:3000
 
 | Role      | Email                        | Lands on                |
 |-----------|------------------------------|-------------------------|
-| Admin     | admin@setujobs.in            | /admin                  |
-| Candidate | candidate@setujobs.in        | /candidate/dashboard    |
-| Recruiter | recruiter@setujobs.in        | /recruiter              |
+| Admin     | admin@manickjobportal.in            | /admin                  |
+| Candidate | candidate@manickjobportal.in        | /candidate/dashboard    |
+| Recruiter | recruiter@manickjobportal.in        | /recruiter              |
 
 **Email verification in development:** no SMTP provider is configured by default, so every email is written to the *email outbox* (Admin → System). Newly registered users also see the verification link directly on the "Verify your email" page when `NODE_ENV !== production`.
 
@@ -138,4 +138,4 @@ All foreign keys declare cascade / set-null rules, and hot paths are indexed (jo
 | Testimonials on homepage | Illustrative copy — replace with CMS content before launch | — |
 | Automated E2E (Playwright) suite | Implemented: 23 tests (candidate, recruiter and admin journeys, public site, authorization, mobile layout) — all passing on the seeded build | Chromium + system deps (`npx playwright install chromium`) |
 
-Demo data (companies, jobs, candidate) is seeded for local evaluation only; delete it before going live with `DELETE FROM users WHERE email LIKE '%@setujobs.in'`.
+Demo data (companies, jobs, candidate) is seeded for local evaluation only; delete it before going live with `DELETE FROM users WHERE email LIKE '%@manickjobportal.in'`.

@@ -27,7 +27,7 @@ import { slugify } from "@/lib/utils";
 const DEMO_PASSWORD = "Demo@12345";
 
 const PLANS = [
-  { code: "free", name: "Free", audience: "recruiter", priceMonthlyInr: 0, jobPostLimit: 1, seatLimit: 1, resumeSearchLimit: 0, featuredJobsPerMonth: 0, description: "Try SetuJobs with one live job.", sortOrder: 1 },
+  { code: "free", name: "Free", audience: "recruiter", priceMonthlyInr: 0, jobPostLimit: 1, seatLimit: 1, resumeSearchLimit: 0, featuredJobsPerMonth: 0, description: "Try Manick Job Portal with one live job.", sortOrder: 1 },
   { code: "starter", name: "Starter", audience: "recruiter", priceMonthlyInr: 2999, jobPostLimit: 5, seatLimit: 2, resumeSearchLimit: 200, featuredJobsPerMonth: 1, description: "For growing teams hiring every month.", sortOrder: 2 },
   { code: "professional", name: "Professional", audience: "recruiter", priceMonthlyInr: 9999, jobPostLimit: 20, seatLimit: 6, resumeSearchLimit: 1000, featuredJobsPerMonth: 5, description: "ATS, analytics and featured listings.", sortOrder: 3 },
   { code: "enterprise", name: "Enterprise", audience: "recruiter", priceMonthlyInr: 24999, jobPostLimit: 100, seatLimit: 25, resumeSearchLimit: 10000, featuredJobsPerMonth: 20, description: "Unlimited hiring with priority support.", sortOrder: 4 },
@@ -93,11 +93,11 @@ const JOBS: SeedJob[] = [
 const BLOGS = [
   { title: "How to write a resume that passes ATS screening in India", slug: "ats-friendly-resume-india", category: "Resume tips", excerpt: "Keywords, formatting and section order that help recruiters find you.", body: "Most employers now use an applicant tracking system before a human reads your resume. Use standard headings like Experience, Education and Skills.\n\nMirror keywords from the job description where they honestly apply to your work. Avoid tables, text boxes and graphics that some parsers misread.\n\nQuantify impact: 'Reduced API latency by 35% across 12 services' beats 'Improved performance'." },
   { title: "Fresher's guide to walk-in interviews", slug: "fresher-walk-in-interview-guide", category: "Interviews", excerpt: "What to carry, how to prepare and how to follow up after a walk-in drive.", body: "Walk-in drives are fast. Carry three printed resumes, a government ID, passport photos if asked, and your offer letters if you have any.\n\nResearch the company in 10 minutes before you arrive and prepare a 60-second introduction about yourself.\n\nAfter the drive, send a short thank-you note to the recruiter within 24 hours." },
-  { title: "Negotiating salary in India: a practical playbook", slug: "salary-negotiation-india", category: "Compensation", excerpt: "Use market data, anchor early and negotiate the full package.", body: "Start with market data for your role and city. Check the salary insights on SetuJobs for typical ranges.\n\nAnchor slightly above your target, and ask about the full compensation: variable pay, joining bonus, learning budget and notice-period waivers.\n\nAlways get the final offer in writing before you resign from your current role." },
+  { title: "Negotiating salary in India: a practical playbook", slug: "salary-negotiation-india", category: "Compensation", excerpt: "Use market data, anchor early and negotiate the full package.", body: "Start with market data for your role and city. Check the salary insights on Manick Job Portal for typical ranges.\n\nAnchor slightly above your target, and ask about the full compensation: variable pay, joining bonus, learning budget and notice-period waivers.\n\nAlways get the final offer in writing before you resign from your current role." },
 ];
 
 async function main() {
-  console.info("Seeding SetuJobs database…");
+  console.info("Seeding Manick Job Portal database…");
   const passwordHash = await hashPassword(DEMO_PASSWORD);
 
   await db.insert(subscriptionPlans).values(PLANS).onConflictDoNothing();
@@ -106,8 +106,8 @@ async function main() {
   await db
     .insert(platformSettings)
     .values([
-      { key: "site_name", value: "SetuJobs" },
-      { key: "support_email", value: "support@setujobs.in" },
+      { key: "site_name", value: "Manick Job Portal" },
+      { key: "support_email", value: "support@manickjobportal.in" },
       { key: "maintenance_mode", value: "off" },
     ])
     .onConflictDoNothing();
@@ -115,13 +115,13 @@ async function main() {
   // Demo accounts
   const [admin] = await db
     .insert(users)
-    .values({ email: "admin@setujobs.in", name: "Platform Admin", role: "admin", passwordHash, emailVerifiedAt: new Date() })
+    .values({ email: "admin@manickjobportal.in", name: "Platform Admin", role: "admin", passwordHash, emailVerifiedAt: new Date() })
     .onConflictDoUpdate({ target: users.email, set: { passwordHash, emailVerifiedAt: new Date(), role: "admin" } })
     .returning({ id: users.id });
 
   const [candidate] = await db
     .insert(users)
-    .values({ email: "candidate@setujobs.in", name: "Aditi Verma", role: "candidate", passwordHash, emailVerifiedAt: new Date(), phone: "9876543210" })
+    .values({ email: "candidate@manickjobportal.in", name: "Aditi Verma", role: "candidate", passwordHash, emailVerifiedAt: new Date(), phone: "9876543210" })
     .onConflictDoUpdate({ target: users.email, set: { passwordHash, emailVerifiedAt: new Date() } })
     .returning({ id: users.id });
 
@@ -172,7 +172,7 @@ async function main() {
 
   const [recruiter] = await db
     .insert(users)
-    .values({ email: "recruiter@setujobs.in", name: "Kavya Iyer", role: "recruiter", passwordHash, emailVerifiedAt: new Date() })
+    .values({ email: "recruiter@manickjobportal.in", name: "Kavya Iyer", role: "recruiter", passwordHash, emailVerifiedAt: new Date() })
     .onConflictDoUpdate({ target: users.email, set: { passwordHash, emailVerifiedAt: new Date() } })
     .returning({ id: users.id });
 
@@ -276,9 +276,9 @@ async function main() {
 
   void admin;
   console.info("Seed complete.");
-  console.info(`  Admin:     admin@setujobs.in / ${DEMO_PASSWORD}`);
-  console.info(`  Candidate: candidate@setujobs.in / ${DEMO_PASSWORD}`);
-  console.info(`  Recruiter: recruiter@setujobs.in / ${DEMO_PASSWORD}`);
+  console.info(`  Admin:     admin@manickjobportal.in / ${DEMO_PASSWORD}`);
+  console.info(`  Candidate: candidate@manickjobportal.in / ${DEMO_PASSWORD}`);
+  console.info(`  Recruiter: recruiter@manickjobportal.in / ${DEMO_PASSWORD}`);
 }
 
 main()

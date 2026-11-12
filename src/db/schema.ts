@@ -510,7 +510,7 @@ export const blogPosts = pgTable(
     body: text("body").notNull(),
     category: varchar("category", { length: 80 }).notNull().default("Career advice"),
     published: boolean("published").notNull().default(true),
-    authorName: varchar("author_name", { length: 120 }).notNull().default("SetuJobs Editorial"),
+    authorName: varchar("author_name", { length: 120 }).notNull().default("Manick Job Portal Editorial"),
     ...timestamps(),
   },
   (t) => [uniqueIndex("blog_posts_slug_uidx").on(t.slug)],

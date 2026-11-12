@@ -26,10 +26,10 @@ test.describe("Admin journey", () => {
     }
 
     // 4. Users: search and filter
-    await page.goto("/admin/users?q=candidate@setujobs.in");
-    await expect(page.getByText("candidate@setujobs.in").first()).toBeVisible();
+    await page.goto("/admin/users?q=candidate@manickjobportal.in");
+    await expect(page.getByText("candidate@manickjobportal.in").first()).toBeVisible();
     await page.goto("/admin/users?role=recruiter");
-    await expect(page.getByText("recruiter@setujobs.in").first()).toBeVisible();
+    await expect(page.getByText("recruiter@manickjobportal.in").first()).toBeVisible();
 
     // 5. Reports queue
     await page.goto("/admin/reports");

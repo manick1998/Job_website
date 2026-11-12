@@ -4,7 +4,7 @@ import { formatINR } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = { title: "Salary insights", description: "Average salary bands in India by job category and city, from live SetuJobs listings." };
+export const metadata = { title: "Salary insights", description: "Average salary bands in India by job category and city, from live Manick Job Portal listings." };
 
 function lpa(n: number) {
   return `₹${(n / 100000).toFixed(1)} LPA`;

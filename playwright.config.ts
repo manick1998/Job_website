@@ -1,7 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
 /**
- * End-to-end tests run against a running SetuJobs instance.
+ * End-to-end tests run against a running Manick Job Portal instance.
  * Start the app (npm run build && npm start, or npm run dev) and seed the database first:
  *   npx tsx --env-file=.env src/db/seed.ts
  * Then: npx playwright test

@@ -16,7 +16,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
     <div className="mx-auto grid min-h-[75vh] max-w-md place-items-center px-4 py-12">
       <Card className="w-full p-8">
         <p className="text-xs font-semibold uppercase tracking-widest text-brand">{recruiter ? "Employer portal" : "Job seekers"}</p>
-        <h1 className="mt-2 text-2xl font-bold text-fg">{recruiter ? "Recruiter login" : "Log in to SetuJobs"}</h1>
+        <h1 className="mt-2 text-2xl font-bold text-fg">{recruiter ? "Recruiter login" : "Log in to Manick Job Portal"}</h1>
         <p className="mt-1 text-sm text-muted">
           {recruiter ? "Manage jobs, candidates and interviews." : "Track applications, save jobs and get matched alerts."}
         </p>

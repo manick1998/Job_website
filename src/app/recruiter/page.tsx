@@ -38,7 +38,7 @@ export default async function RecruiterDashboardPage() {
       {ctx.company.verificationStatus !== "verified" && (
         <div className="mb-6">
           <Notice tone="warning">
-            Your company is <strong>{ctx.company.verificationStatus}</strong>. Jobs you publish are reviewed by SetuJobs before going live. Verification usually takes 1–2 business days.
+            Your company is <strong>{ctx.company.verificationStatus}</strong>. Jobs you publish are reviewed by Manick Job Portal before going live. Verification usually takes 1–2 business days.
           </Notice>
         </div>
       )}

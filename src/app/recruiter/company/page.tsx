@@ -39,7 +39,7 @@ export default async function CompanyPage() {
         <Card className="p-5">
           <p className="text-xs text-muted">Verification</p>
           <div className="mt-2"><Badge tone={c.verificationStatus === "verified" ? "green" : c.verificationStatus === "rejected" ? "red" : "amber"}>{c.verificationStatus}</Badge></div>
-          <p className="mt-2 text-xs text-muted">{c.verificationStatus === "verified" ? "Verified employer badge is shown." : "Verification is reviewed by SetuJobs."}</p>
+          <p className="mt-2 text-xs text-muted">{c.verificationStatus === "verified" ? "Verified employer badge is shown." : "Verification is reviewed by Manick Job Portal."}</p>
         </Card>
         <Card className="p-5">
           <p className="text-xs text-muted">Plan</p>
@@ -90,7 +90,7 @@ export default async function CompanyPage() {
           <Card className="p-6">
             <h2 className="font-bold text-fg">Invite a recruiter</h2>
             {isOwner ? (
-              <p className="mt-1 text-sm text-muted">The colleague must already have a recruiter account on SetuJobs.</p>
+              <p className="mt-1 text-sm text-muted">The colleague must already have a recruiter account on Manick Job Portal.</p>
             ) : (
               <p className="mt-1 text-sm text-muted">Only the company owner can invite team members.</p>
             )}

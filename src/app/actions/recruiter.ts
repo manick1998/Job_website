@@ -94,7 +94,7 @@ export async function inviteMemberAction(_prev: ActionState, formData: FormData)
 
   const [invitee] = await db.select().from(users).where(eq(users.email, email)).limit(1);
   if (!invitee || invitee.role !== "recruiter") {
-    return fail("That person must first register as a recruiter on SetuJobs.", values, { email: "No recruiter account with this email" });
+    return fail("That person must first register as a recruiter on Manick Job Portal.", values, { email: "No recruiter account with this email" });
   }
   const plan = await getCompanyPlan(company.planCode);
   const [{ value }] = await db.select({ value: count() }).from(companyMembers).where(eq(companyMembers.companyId, company.id));
@@ -437,7 +437,7 @@ export async function scheduleInterviewAction(_prev: ActionState, formData: Form
     to: row.candidateEmail,
     kind: "interview_invitation",
     subject: `Interview invitation: ${row.jobTitle} at ${company.name}`,
-    text: `Hi ${row.candidateName},\n\nYou are invited to a ${d.type} interview for ${row.jobTitle} at ${company.name}.\nWhen: ${whenText} IST (${d.durationMinutes} minutes)\n${d.meetingLink ? `Meeting link: ${d.meetingLink}\n` : ""}\nGood luck!\n— SetuJobs`,
+    text: `Hi ${row.candidateName},\n\nYou are invited to a ${d.type} interview for ${row.jobTitle} at ${company.name}.\nWhen: ${whenText} IST (${d.durationMinutes} minutes)\n${d.meetingLink ? `Meeting link: ${d.meetingLink}\n` : ""}\nGood luck!\n— Manick Job Portal`,
   });
   revalidatePath(`/recruiter/applications/${d.applicationId}`);
   revalidatePath("/recruiter");

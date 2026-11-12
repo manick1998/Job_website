@@ -11,7 +11,7 @@ export default async function PublicLayout({ children }: { children: ReactNode }
     <div className="flex min-h-screen flex-col">
       {maintenance === "on" && (
         <div className="bg-amber-100 px-4 py-2 text-center text-sm font-medium text-amber-900">
-          SetuJobs is under scheduled maintenance. Browsing works; new applications are paused.
+          Manick Job Portal is under scheduled maintenance. Browsing works; new applications are paused.
         </div>
       )}
       <SiteHeader user={user ? { name: user.name, role: user.role, dashboard: dashboardPathFor(user.role) } : null} />

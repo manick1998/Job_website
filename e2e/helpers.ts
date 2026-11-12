@@ -3,9 +3,9 @@ import { Pool } from "pg";
 
 export const DEMO_PASSWORD = "Demo@12345";
 export const ACCOUNTS = {
-  candidate: "candidate@setujobs.in",
-  recruiter: "recruiter@setujobs.in",
-  admin: "admin@setujobs.in",
+  candidate: "candidate@manickjobportal.in",
+  recruiter: "recruiter@manickjobportal.in",
+  admin: "admin@manickjobportal.in",
 };
 
 /** Minimal but structurally valid PDF used for resume upload tests. */

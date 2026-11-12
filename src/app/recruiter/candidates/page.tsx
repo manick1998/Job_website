@@ -33,7 +33,7 @@ export default async function CandidateSearchPage({ searchParams }: { searchPara
 
   return (
     <>
-      <PageHeader title="Candidate search" description="Search the SetuJobs talent pool. Only candidates with visible profiles appear. Contact details are revealed after they apply to your job." />
+      <PageHeader title="Candidate search" description="Search the Manick Job Portal talent pool. Only candidates with visible profiles appear. Contact details are revealed after they apply to your job." />
 
       <div className="grid gap-6 lg:grid-cols-[300px_1fr]">
         <Card className="h-fit space-y-4 p-5 lg:sticky lg:top-24">

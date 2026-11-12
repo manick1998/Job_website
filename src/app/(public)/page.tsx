@@ -112,7 +112,7 @@ export default async function HomePage() {
 
           <div className="relative hidden h-[420px] lg:block" aria-hidden>
             <div className="absolute left-4 top-6 w-72 animate-float-slow rounded-2xl border border-line bg-surface p-5 shadow-2xl shadow-indigo-500/20">
-              <p className="text-xs font-semibold text-brand">Live on SetuJobs</p>
+              <p className="text-xs font-semibold text-brand">Live on Manick Job Portal</p>
               <p className="mt-2 text-4xl font-extrabold text-fg">{data.stats.liveJobs}</p>
               <p className="text-sm text-muted">open roles across India</p>
             </div>

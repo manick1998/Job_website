@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Params) {
   const title = `${item.job.title} at ${item.company.name}`;
   return {
     title,
-    description: `${item.job.title} in ${item.job.city} at ${item.company.name}. ${salaryLabel(item.job.salaryMin, item.job.salaryMax, item.job.salaryHidden)}. Apply on SetuJobs.`,
+    description: `${item.job.title} in ${item.job.city} at ${item.company.name}. ${salaryLabel(item.job.salaryMin, item.job.salaryMax, item.job.salaryHidden)}. Apply on Manick Job Portal.`,
     alternates: { canonical: `${APP_URL}/jobs/${item.job.slug}` },
     openGraph: { title, url: `${APP_URL}/jobs/${item.job.slug}` },
   };

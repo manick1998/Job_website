@@ -53,7 +53,7 @@ export async function GET() {
   return new Response(JSON.stringify(payload, null, 2), {
     headers: {
       "Content-Type": "application/json",
-      "Content-Disposition": `attachment; filename="setujobs-data-${user.id}.json"`,
+      "Content-Disposition": `attachment; filename="manickjobportal-data-${user.id}.json"`,
       "Cache-Control": "private, no-store",
     },
   });

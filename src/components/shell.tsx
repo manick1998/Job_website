@@ -82,7 +82,7 @@ export function DashboardShell({
     <div className="min-h-screen">
       <div className="sticky top-0 z-30 border-b border-line bg-bg/85 backdrop-blur-xl">
         <div className="flex h-16 items-center justify-between px-4 sm:px-6">
-          <Logo />
+          <Logo size="sm" />
           <div className="flex items-center gap-3">
             <div className="hidden text-right sm:block">
               <p className="text-sm font-semibold text-fg">{userName}</p>

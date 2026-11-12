@@ -46,7 +46,7 @@ export default async function CompaniesPage({ searchParams }: { searchParams: Pr
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-fg">Companies hiring on SetuJobs</h1>
+          <h1 className="text-3xl font-bold tracking-tight text-fg">Companies hiring on Manick Job Portal</h1>
           <p className="mt-2 text-sm text-muted">Verified employers with open roles across India.</p>
         </div>
         <form method="get" className="flex w-full max-w-md gap-2">

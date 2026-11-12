@@ -26,7 +26,7 @@ export default async function PricingPage() {
 
       <div className="mt-8">
         <Notice tone="warning">
-          Online checkout is not yet enabled on this deployment. Razorpay credentials (<code>RAZORPAY_KEY_ID</code>, <code>RAZORPAY_KEY_SECRET</code>, <code>RAZORPAY_WEBHOOK_SECRET</code>) are required. Until then, plan changes are made by the SetuJobs team.
+          Online checkout is not yet enabled on this deployment. Razorpay credentials (<code>RAZORPAY_KEY_ID</code>, <code>RAZORPAY_KEY_SECRET</code>, <code>RAZORPAY_WEBHOOK_SECRET</code>) are required. Until then, plan changes are made by the Manick Job Portal team.
         </Notice>
       </div>
 

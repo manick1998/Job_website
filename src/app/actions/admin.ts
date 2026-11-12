@@ -226,8 +226,8 @@ export async function createCategoryAction(_prev: ActionState, formData: FormDat
 export async function updateSettingsAction(_prev: ActionState, formData: FormData): Promise<ActionState> {
   const admin = await requireUser("admin");
   const entries: [string, string][] = [
-    ["site_name", str(formData, "site_name").trim().slice(0, 80) || "SetuJobs"],
-    ["support_email", str(formData, "support_email").trim().slice(0, 120) || "support@setujobs.in"],
+    ["site_name", str(formData, "site_name").trim().slice(0, 80) || "Manick Job Portal"],
+    ["support_email", str(formData, "support_email").trim().slice(0, 120) || "support@manickjobportal.in"],
     ["maintenance_mode", str(formData, "maintenance_mode") === "on" ? "on" : "off"],
   ];
   for (const [key, value] of entries) {

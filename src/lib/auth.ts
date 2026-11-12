@@ -6,7 +6,7 @@ import { db } from "@/db";
 import { sessions, users, type UserRole } from "@/db/schema";
 import { hashToken, randomToken } from "@/lib/password";
 
-export const SESSION_COOKIE = "setu_session";
+export const SESSION_COOKIE = "manick_session";
 const SESSION_DAYS = 30;
 
 export type SessionUser = {

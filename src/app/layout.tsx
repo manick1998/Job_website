@@ -7,17 +7,26 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(APP_URL),
   title: {
-    default: "SetuJobs | Find Your Dream Job. Build Your Future.",
-    template: "%s | SetuJobs",
+    default: "Manick Job Portal | Find Your Dream Job. Build Your Future.",
+    template: "%s | Manick Job Portal",
   },
   description:
-    "SetuJobs is India's bridge between talent and opportunity. Search verified jobs, apply in one click, and hire faster with our applicant tracking system.",
+    "Manick Job Portal is India's bridge between talent and opportunity. Search verified jobs, apply in one click, and hire faster with our applicant tracking system.",
   openGraph: {
-    title: "SetuJobs | Find Your Dream Job. Build Your Future.",
+    title: "Manick Job Portal | Find Your Dream Job. Build Your Future.",
     description: "Search verified jobs across India, track applications and hire with an AI-ready ATS.",
     url: APP_URL,
-    siteName: "SetuJobs",
+    siteName: "Manick Job Portal",
     type: "website",
+    images: [
+      { url: "/og-image.png", width: 1200, height: 630, alt: "Manick Job Portal" },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Manick Job Portal | Find Your Dream Job. Build Your Future.",
+    description: "Search verified jobs across India, track applications and hire with an AI-ready ATS.",
+    images: ["/og-image.png"],
   },
   alternates: { canonical: APP_URL },
 };

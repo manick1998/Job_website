@@ -36,8 +36,8 @@ async function issueVerification(userId: string, email: string, name: string) {
   await sendEmail({
     to: email,
     kind: "verify_email",
-    subject: "Verify your SetuJobs email",
-    text: `Hi ${name},\n\nWelcome to SetuJobs! Verify your email to activate your account:\n${link}\n\nThis link expires in 24 hours. If you did not sign up, ignore this email.`,
+    subject: "Verify your Manick Job Portal email",
+    text: `Hi ${name},\n\nWelcome to Manick Job Portal! Verify your email to activate your account:\n${link}\n\nThis link expires in 24 hours. If you did not sign up, ignore this email.`,
   });
 }
 
@@ -126,7 +126,7 @@ export async function loginAction(_prev: ActionState, formData: FormData): Promi
   const valid = !!user && (await verifyPassword(parsed.data.password, user.passwordHash));
   if (!user || !valid) return fail("Invalid email or password.", { email });
   if (user.status === "suspended") {
-    return fail("Your account has been suspended. Contact support@setujobs.in.", { email });
+    return fail("Your account has been suspended. Contact support@manickjobportal.in.", { email });
   }
 
   await db.update(users).set({ lastLoginAt: new Date() }).where(eq(users.id, user.id));
@@ -157,7 +157,7 @@ export async function forgotPasswordAction(_prev: ActionState, formData: FormDat
     await sendEmail({
       to: user.email,
       kind: "password_reset",
-      subject: "Reset your SetuJobs password",
+      subject: "Reset your Manick Job Portal password",
       text: `Hi ${user.name},\n\nUse this link to reset your password (valid for 1 hour):\n${APP_URL}/reset-password?token=${token}\n\nIf you did not request this, you can ignore this email.`,
     });
   }

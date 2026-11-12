@@ -18,8 +18,8 @@ export default async function SystemPage() {
           <h2 className="font-bold text-fg">Website configuration</h2>
           <div className="mt-5">
             <ActionForm action={updateSettingsAction} submitLabel="Save settings" pendingLabel="Saving…">
-              <Field name="site_name" label="Site name" defaultValue={settings.site_name ?? "SetuJobs"} />
-              <Field name="support_email" label="Support email" type="email" defaultValue={settings.support_email ?? "support@setujobs.in"} />
+              <Field name="site_name" label="Site name" defaultValue={settings.site_name ?? "Manick Job Portal"} />
+              <Field name="support_email" label="Support email" type="email" defaultValue={settings.support_email ?? "support@manickjobportal.in"} />
               <CheckField name="maintenance_mode" label="Maintenance mode" hint="Shows a banner and pauses new applications for everyone." defaultChecked={settings.maintenance_mode === "on"} />
             </ActionForm>
           </div>
